@@ -29,6 +29,16 @@ def two_sum_sort?(arr, target_sum)
     false
 end
 
-arr = [0, 1, 5, 7]
-p two_sum_sort?(arr, 6) # => should be true
-p two_sum_sort?(arr, 10) # => should be false
+
+def two_sum_hash?(arr, target_sum)
+    hash = {}
+    arr.each_with_index {|ele, i| hash[ele] = i}
+    arr.each_with_index do |ele, i|
+        return true if (hash[target_sum - ele]) && (i != hash[target_sum - ele])
+    end
+    false
+end
+
+arr = [0, 1, 5,5, 7]
+p two_sum_hash?(arr, 6) # => should be true
+p two_sum_hash?(arr, 10) # => should be false
